@@ -29,7 +29,7 @@ const typeDefs = gql`
 
   extend type Mutation {
       postPolicy(newPolicy: InputPolicy, access_token: String): Policy,
-      delPolicy(_id: ID, access_token: String): Message,
+      delPolicy(_id: ID, access_token: String): Policy,
       updatePolicy(_id: ID, access_token: String, newPolicy: InputPolicy): Policy,
   }
 

@@ -2,8 +2,8 @@ const Policy = require('../model/policy')
 function authorization(req,res,next){
     Policy.findById(req.params.policyId)
     .then(data=>{
-        console.log('authorization success')
         if(data.userId===req.body.user_id){
+            console.log('authorization success')
             next()
         }
         else{

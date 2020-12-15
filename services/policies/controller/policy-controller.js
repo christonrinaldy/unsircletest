@@ -24,21 +24,21 @@ class PolicyController {
     static delete (req,res) {
         const {policyId} = req.params
         Policy.findByIdAndDelete(policyId)
-        .then (res => {
-            console.log('success to delete data with id:',policyId)
-            res.status(200).json({message: `success to delete data with id: ${policyId}`})
+        .then (result => {
+            console.log('success to delete data:',result)
+            res.status(200).json(result)
         })
         .catch (err => {
-            res.status(500).json({message: err})
+            res.status(500).json({message: err.message})
         })
     }
     static update (req,res) {
         const {policyId} = req.params
         Policy.findByIdAndUpdate(policyId, req.body)
-        .then (async res => {
+        .then (async result => {
             const data = await Policy.findById(policyId)
-            console.log(data)
-            await res.status(200).json(data)
+            console.log(result)
+            return res.status(200).json(data)
         })
         .catch (err => {
             res.status(500).json({message: err})
